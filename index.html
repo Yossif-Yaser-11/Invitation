@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دعوة زفاف يوسف و رحمة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --t1:#e9fcfa; --t2:#c4f2ed; --t3:#8fe1db; --t4:#2bb5ad; --t5:#12857f; --t6:#0b5c58;
+    --ink:#0b5c58;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    min-height:100vh;
+    font-family:'Amiri',serif;
+    color:var(--ink);
+    background:linear-gradient(180deg,#eafdfb 0%,#c9f3ee 55%,#a6e8e1 100%);
+    background-attachment:fixed;
+    padding:28px 14px 110px;
+    overflow-x:hidden;
+  }
+
+  /* بتلات بتنزل */
+  .petal{
+    position:fixed;top:-40px;z-index:0;pointer-events:none;
+    border-radius:80% 0 80% 0;
+    opacity:.75;
+    animation:fall linear infinite;
+  }
+  @keyframes fall{
+    0%{transform:translate3d(0,-40px,0) rotate(0deg)}
+    50%{transform:translate3d(40px,55vh,0) rotate(180deg)}
+    100%{transform:translate3d(-30px,112vh,0) rotate(360deg)}
+  }
+
+  .card{
+    position:relative;z-index:1;
+    max-width:540px;margin:0 auto;
+    padding:70px 26px 70px;
+    background:rgba(255,255,255,.78);
+    border:1px solid var(--t3);
+    border-radius:30px;
+    box-shadow:0 20px 50px rgba(18,133,127,.22);
+    text-align:center;
+  }
+  .card::before{
+    content:"";position:absolute;inset:10px;
+    border:1.5px solid var(--t4);
+    border-radius:22px;pointer-events:none;opacity:.55;
+  }
+
+  /* ورود الأركان */
+  .corner{position:absolute;width:170px;height:170px;pointer-events:none;z-index:2}
+  .c-tl{top:-34px;left:-34px}
+  .c-tr{top:-34px;right:-34px;transform:scaleX(-1)}
+  .c-bl{bottom:-34px;left:-34px;transform:scaleY(-1)}
+  .c-br{bottom:-34px;right:-34px;transform:scale(-1,-1)}
+  .sway{animation:sway 6s ease-in-out infinite;transform-origin:center}
+  @keyframes sway{0%,100%{rotate:-2deg}50%{rotate:2deg}}
+
+  .dua{
+    font-family:'Aref Ruqaa',serif;
+    font-size:clamp(25px,6.5vw,32px);
+    line-height:2;
+    color:var(--t5);
+    margin-top:10px;
+  }
+  .dua span{display:block}
+
+  .divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:22px auto}
+  .divider i{height:1.5px;width:70px;background:linear-gradient(90deg,transparent,var(--t4),transparent)}
+  .divider svg{width:34px;height:34px}
+
+  .invite{font-size:clamp(19px,5vw,23px);line-height:2;color:var(--t6);font-weight:700}
+
+  .names{
+    font-family:'Aref Ruqaa',serif;font-weight:700;
+    font-size:clamp(46px,13vw,68px);
+    line-height:1.5;margin:12px 0 4px;
+    background:linear-gradient(135deg,#0b5c58,#2bb5ad 55%,#12857f);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .names .amp{font-family:'Amiri',serif;font-size:.6em;padding:0 8px}
+
+  .label{font-family:'Reem Kufi',sans-serif;letter-spacing:.5px;color:var(--t4);font-size:18px;margin-bottom:6px}
+  .block{margin-top:6px}
+  .dayname{font-family:'Aref Ruqaa',serif;font-size:34px;color:var(--t5)}
+  .date{font-size:24px;font-weight:700}
+  .time{font-size:20px;color:var(--t5);margin-top:4px}
+
+  .venue-name{font-family:'Aref Ruqaa',serif;font-size:32px;color:var(--t5)}
+  .venue-line{font-size:21px;line-height:1.9}
+  .btn-map{
+    display:inline-block;margin-top:14px;padding:10px 24px;border-radius:999px;
+    background:linear-gradient(135deg,var(--t4),var(--t5));color:#fff;text-decoration:none;
+    font-family:'Reem Kufi',sans-serif;font-size:17px;box-shadow:0 6px 16px rgba(18,133,127,.35);
+    transition:transform .2s;
+  }
+  .btn-map:hover{transform:translateY(-2px)}
+
+  .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+  .unit{
+    background:linear-gradient(180deg,#fff,var(--t1));
+    border:1.5px solid var(--t3);border-radius:18px;padding:12px 4px;
+    box-shadow:0 6px 14px rgba(18,133,127,.12);
+  }
+  .unit b{display:block;font-family:'Reem Kufi',sans-serif;font-size:clamp(26px,8vw,36px);color:var(--t5);line-height:1.2}
+  .unit small{font-size:16px;color:var(--t4)}
+  .cd-msg{font-family:'Aref Ruqaa',serif;font-size:28px;color:var(--t5);margin-top:8px}
+
+  .footer{font-family:'Aref Ruqaa',serif;font-size:26px;color:var(--t5);margin-top:6px}
+
+  /* زرار الأغنية */
+  .music-btn{
+    position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:20;
+    display:flex;align-items:center;gap:10px;
+    padding:13px 26px;border:none;border-radius:999px;cursor:pointer;
+    background:linear-gradient(135deg,var(--t4),var(--t5));color:#fff;
+    font-family:'Reem Kufi',sans-serif;font-size:18px;
+    box-shadow:0 10px 26px rgba(11,92,88,.4);
+    transition:transform .2s, filter .2s;
+  }
+  .music-btn:hover{filter:brightness(1.08)}
+  .music-btn:active{transform:translateX(-50%) scale(.96)}
+  .music-btn .ico{font-size:20px}
+  .music-btn.playing .ico{animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* شاشة الافتتاح (بتظهر لو المتصفح منع الصوت التلقائي) */
+  .intro{
+    position:fixed;inset:0;z-index:100;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(180deg,#eafdfb 0%,#c9f3ee 55%,#a6e8e1 100%);
+    text-align:center;cursor:pointer;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  .intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+  .intro-rose{width:130px;height:130px;animation:sway 5s ease-in-out infinite}
+  .intro-sub{font-family:'Reem Kufi',sans-serif;font-size:20px;color:var(--t4)}
+  .intro-names{
+    font-family:'Aref Ruqaa',serif;font-weight:700;font-size:clamp(46px,14vw,70px);line-height:1.5;
+    background:linear-gradient(135deg,#0b5c58,#2bb5ad 55%,#12857f);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .open-btn{
+    margin-top:18px;padding:14px 34px;border:none;border-radius:999px;cursor:pointer;
+    background:linear-gradient(135deg,var(--t4),var(--t5));color:#fff;
+    font-family:'Reem Kufi',sans-serif;font-size:20px;
+    box-shadow:0 10px 26px rgba(11,92,88,.4);
+    animation:pulseBtn 1.8s ease-in-out infinite;
+  }
+  @keyframes pulseBtn{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+  @media (prefers-reduced-motion:reduce){
+    .petal,.sway,.music-btn.playing .ico,.intro-rose,.open-btn{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+  @media (max-width:420px){
+    .card{padding:62px 18px 62px}
+    .corner{width:135px;height:135px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ======== تعريفات الورود (SVG) ======== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="rose" viewBox="0 0 100 100">
+      <g transform="translate(50 50)">
+        <g fill="#a6e8e2" stroke="#4fc9c1" stroke-width="1.2">
+          <ellipse cx="0" cy="-26" rx="21" ry="25"/>
+          <ellipse cx="0" cy="-26" rx="21" ry="25" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-26" rx="21" ry="25" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-26" rx="21" ry="25" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-26" rx="21" ry="25" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-26" rx="21" ry="25" transform="rotate(300)"/>
+        </g>
+        <g fill="#5fd0c8" stroke="#2bb5ad" stroke-width="1.1">
+          <ellipse cx="0" cy="-17" rx="15" ry="18" transform="rotate(20)"/>
+          <ellipse cx="0" cy="-17" rx="15" ry="18" transform="rotate(92)"/>
+          <ellipse cx="0" cy="-17" rx="15" ry="18" transform="rotate(164)"/>
+          <ellipse cx="0" cy="-17" rx="15" ry="18" transform="rotate(236)"/>
+          <ellipse cx="0" cy="-17" rx="15" ry="18" transform="rotate(308)"/>
+        </g>
+        <circle r="13" fill="#2bb5ad"/>
+        <path d="M-2 0 C-2 -5 6 -5 6 1 C6 8 -6 9 -8 0 C-10 -9 3 -12 10 -5" fill="none" stroke="#e9fcfa" stroke-width="1.6" stroke-linecap="round" opacity=".9"/>
+      </g>
+    </symbol>
+
+    <symbol id="cluster" viewBox="0 0 220 220">
+      <g fill="#12857f" opacity=".9">
+        <ellipse cx="150" cy="40" rx="12" ry="30" transform="rotate(35 150 40)"/>
+        <ellipse cx="40" cy="150" rx="12" ry="30" transform="rotate(-55 40 150)"/>
+        <ellipse cx="120" cy="125" rx="11" ry="26" transform="rotate(75 120 125)"/>
+        <ellipse cx="25" cy="95" rx="10" ry="24" transform="rotate(-20 25 95)"/>
+      </g>
+      <g fill="#2bb5ad" opacity=".85">
+        <ellipse cx="185" cy="75" rx="9" ry="22" transform="rotate(60 185 75)"/>
+        <ellipse cx="70" cy="190" rx="9" ry="22" transform="rotate(-30 70 190)"/>
+      </g>
+      <use href="#rose" x="8" y="8" width="115" height="115"/>
+      <use href="#rose" x="105" y="18" width="80" height="80"/>
+      <use href="#rose" x="14" y="108" width="85" height="85"/>
+      <use href="#rose" x="118" y="104" width="52" height="52"/>
+      <use href="#rose" x="70" y="140" width="38" height="38"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="card">
+  <svg class="corner c-tl sway"><use href="#cluster"/></svg>
+  <svg class="corner c-tr sway"><use href="#cluster"/></svg>
+  <svg class="corner c-bl sway"><use href="#cluster"/></svg>
+  <svg class="corner c-br sway"><use href="#cluster"/></svg>
+
+  <!-- الدعاء -->
+  <section class="dua reveal">
+    <span>بوركت فاتحة العمر معك</span>
+    <span>وبورك مسعى سرناه سويًا</span>
+  </section>
+
+  <div class="divider reveal"><i></i><svg><use href="#rose"/></svg><i></i></div>
+
+  <!-- الدعوة والأسماء -->
+  <section class="reveal">
+    <p class="invite">بكل حب ومودة.. نتشرف بدعوتكم لحفل زفافنا 💙</p>
+    <h1 class="names">يوسف <span class="amp">&amp;</span> رحمة</h1>
+  </section>
+
+  <div class="divider reveal"><i></i><svg><use href="#rose"/></svg><i></i></div>
+
+  <!-- اليوم والتاريخ -->
+  <section class="block reveal">
+    <p class="label">الموعد</p>
+    <p class="dayname" id="dayName">—</p>
+    <p class="date" id="dateText">—</p>
+    <p class="time" id="timeText"></p>
+  </section>
+
+  <div class="divider reveal"><i></i><svg><use href="#rose"/></svg><i></i></div>
+
+  <!-- المكان -->
+  <section class="block reveal">
+    <p class="label">المكان</p>
+    <p class="venue-name">نادي الجلاء</p>
+    <p class="venue-line">صلاح سالم - مصر الجديدة</p>
+    <p class="venue-line">قاعة براديس</p>
+    <a class="btn-map" id="mapBtn" href="#" target="_blank" rel="noopener">📍 افتح الموقع على الخريطة</a>
+  </section>
+
+  <div class="divider reveal"><i></i><svg><use href="#rose"/></svg><i></i></div>
+
+  <!-- العد التنازلي -->
+  <section class="block reveal">
+    <p class="label">فاضل على الفرح</p>
+    <div class="countdown" id="countdown">
+      <div class="unit"><b id="cd-d">٠</b><small>يوم</small></div>
+      <div class="unit"><b id="cd-h">٠</b><small>ساعة</small></div>
+      <div class="unit"><b id="cd-m">٠</b><small>دقيقة</small></div>
+      <div class="unit"><b id="cd-s">٠</b><small>ثانية</small></div>
+    </div>
+    <p class="cd-msg" id="cdMsg" hidden></p>
+  </section>
+
+  <p class="footer reveal" style="margin-top:28px">💙 في انتظاركم 💙</p>
+</main>
+
+<button class="music-btn" id="musicBtn" type="button" aria-label="تشغيل أو إيقاف الأغنية">
+  <span class="ico" id="musicIco">▶</span><span id="musicTxt">تشغيل الأغنية</span>
+</button>
+
+<audio id="bgAudio" loop preload="auto"></audio>
+
+<!-- شاشة الافتتاح: الضغط عليها بيشغّل الأغنية فورًا ويفتح الدعوة -->
+<div class="intro" id="intro">
+  <svg class="intro-rose"><use href="#rose"/></svg>
+  <p class="intro-sub">دعوة زفاف</p>
+  <p class="intro-names">يوسف &amp; رحمة</p>
+  <button class="open-btn" id="openBtn" type="button">افتح الدعوة 💌</button>
+</div>
+
+<script>
+/* ==========================================================
+   ✏️ الإعدادات — عدّل من هنا بس
+   ========================================================== */
+const CONFIG = {
+  // تاريخ ووقت الزفاف (السنة-الشهر-اليوم T الساعة:الدقيقة) — الموعد الحالي مؤقت
+  weddingDate: "2027-07-07T19:00:00",
+
+  // يظهر الوقت تحت التاريخ؟
+  showTime: true,
+
+  // رابط الأغنية (mp3) أو اسم ملف جنب الصفحة، مثال: "song.mp3"
+  // لو سبته فاضي هيشتغل لحن هادي مدمج بدل الأغنية
+  musicUrl: "sound.mp3",
+
+  // رابط لوكيشن القاعة على الخريطة (سيبه فاضي = بحث تلقائي باسم النادي)
+  mapUrl: "",
+  mapQuery: "نادي الجلاء صلاح سالم مصر الجديدة"
+};
+
+/* ================= التاريخ واليوم ================= */
+const target = new Date(CONFIG.weddingDate);
+const fmt = (opts) => new Intl.DateTimeFormat('ar-EG-u-ca-gregory', opts).format(target);
+
+if (!isNaN(target)) {
+  document.getElementById('dayName').textContent = fmt({ weekday: 'long' });
+  document.getElementById('dateText').textContent = fmt({ day: 'numeric', month: 'long', year: 'numeric' });
+  if (CONFIG.showTime) {
+    document.getElementById('timeText').textContent = 'الساعة ' + fmt({ hour: 'numeric', minute: '2-digit' });
+  }
+}
+
+/* ================= الخريطة ================= */
+document.getElementById('mapBtn').href = CONFIG.mapUrl ||
+  ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(CONFIG.mapQuery));
+
+/* ================= العد التنازلي ================= */
+const nf = new Intl.NumberFormat('ar-EG');
+const $ = (id) => document.getElementById(id);
+function tick() {
+  const diff = target - new Date();
+  if (isNaN(diff)) return;
+  if (diff <= 0) {
+    $('countdown').hidden = true;
+    const m = $('cdMsg'); m.hidden = false; m.textContent = 'النهاردة فرحنا 💙';
+    return;
+  }
+  const s = Math.floor(diff / 1000);
+  $('cd-d').textContent = nf.format(Math.floor(s / 86400));
+  $('cd-h').textContent = nf.format(Math.floor((s % 86400) / 3600));
+  $('cd-m').textContent = nf.format(Math.floor((s % 3600) / 60));
+  $('cd-s').textContent = nf.format(s % 60);
+}
+tick(); setInterval(tick, 1000);
+
+/* ================= بتلات بتنزل ================= */
+(function petals() {
+  const colors = ['#8fe1db', '#5fd0c8', '#c4f2ed', '#2bb5ad', '#a6e8e2'];
+  const count = window.innerWidth < 500 ? 12 : 20;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 9 + Math.random() * 12;
+    p.style.width = size + 'px';
+    p.style.height = size * 1.3 + 'px';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.background = colors[i % colors.length];
+    p.style.animationDuration = 9 + Math.random() * 10 + 's';
+    p.style.animationDelay = -Math.random() * 18 + 's';
+    document.body.appendChild(p);
+  }
+})();
+
+/* ================= ظهور تدريجي ================= */
+(function reveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .15 });
+  els.forEach(e => io.observe(e));
+})();
+
+/* ================= الموسيقى ================= */
+const btn = $('musicBtn'), ico = $('musicIco'), txt = $('musicTxt'), audio = $('bgAudio');
+let playing = false;
+let userStopped = false;   // لو المستخدم وقّفها بإيده منرجعش نشغلها تلقائي
+
+function setUI(on) {
+  playing = on;
+  btn.classList.toggle('playing', on);
+  ico.textContent = on ? '⏸' : '▶';
+  txt.textContent = on ? 'إيقاف الأغنية' : 'تشغيل الأغنية';
+}
+
+/* لحن هادي مدمج (يشتغل لو مفيش musicUrl) */
+const Synth = (() => {
+  let ctx, master, timer, step = 0, nextTime = 0;
+  const chords = [
+    [261.63, 329.63, 392.00, 523.25],   // C
+    [220.00, 261.63, 329.63, 440.00],   // Am
+    [174.61, 220.00, 261.63, 349.23],   // F
+    [196.00, 246.94, 293.66, 392.00]    // G
+  ];
+  const pattern = [0, 1, 2, 3, 2, 1, 2, 3];
+  const NOTE = 0.42;
+
+  function init() {
+    if (ctx) return;
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    master = ctx.createGain(); master.gain.value = 0.22;
+    const delay = ctx.createDelay(); delay.delayTime.value = 0.34;
+    const fb = ctx.createGain(); fb.gain.value = 0.38;
+    delay.connect(fb); fb.connect(delay);
+    master.connect(ctx.destination);
+    master.connect(delay); delay.connect(ctx.destination);
+  }
+  function playNote(freq, t, dur, vol) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + 0.03);
+    g.gain.exponentialRampToValueAtTime(0.0008, t + dur);
+    o.connect(g); g.connect(master);
+    o.start(t); o.stop(t + dur + 0.05);
+  }
+  function schedule() {
+    while (nextTime < ctx.currentTime + 0.6) {
+      const bar = Math.floor(step / 8) % chords.length;
+      const chord = chords[bar];
+      const n = chord[pattern[step % 8]];
+      playNote(n, nextTime, 1.3, 0.5);
+      if (step % 8 === 0) playNote(chord[0] / 2, nextTime, 3.2, 0.45);   // نغمة قرار
+      if (step % 8 === 4) playNote(chord[2] * 2, nextTime, 1.6, 0.18);   // لمعة عالية
+      nextTime += NOTE; step++;
+    }
+  }
+  return {
+    async start() {
+      init();
+      await Promise.race([ctx.resume(), new Promise(r => setTimeout(r, 500))]);
+      if (ctx.state !== 'running') return false;
+      if (!timer) { nextTime = ctx.currentTime + 0.1; timer = setInterval(schedule, 150); }
+      return true;
+    },
+    stop() { if (timer) { clearInterval(timer); timer = null; } if (ctx) ctx.suspend(); }
+  };
+})();
+
+let useFile = !!CONFIG.musicUrl;
+if (useFile) audio.src = CONFIG.musicUrl;
+
+async function startMusic() {
+  try {
+    if (useFile) { await audio.play(); return true; }
+    return await Synth.start();
+  } catch (e) {
+    // ملف الأغنية مش موجود/مش مدعوم → نشغّل اللحن المدمج بدله
+    if (useFile && e && e.name === 'NotSupportedError') {
+      useFile = false;
+      try { return await Synth.start(); } catch (_) { return false; }
+    }
+    return false;
+  }
+}
+function stopMusic() { if (useFile) audio.pause(); else Synth.stop(); }
+
+btn.addEventListener('click', async () => {
+  if (playing) { stopMusic(); userStopped = true; setUI(false); }
+  else { userStopped = false; setUI(await startMusic()); }
+});
+
+/* ================= تشغيل الأغنية أول ما الموقع يفتح =================
+   1) بنحاول نشغّلها فورًا أول ما الصفحة تفتح.
+   2) المتصفحات (كروم/سفاري/...) بتمنع الصوت قبل أي لمسة من المستخدم،
+      فلو اتمنعت بتظهر شاشة "افتح الدعوة" — أول ضغطة عليها بتشغّل الأغنية
+      في نفس اللحظة وتفتح الدعوة. */
+const intro = $('intro');
+const hideIntro = () => intro.classList.add('hide');
+
+intro.addEventListener('click', async () => {
+  userStopped = false;
+  setUI(await startMusic());
+  hideIntro();
+});
+
+(async function autoplay() {
+  const ok = await startMusic();
+  setUI(ok);
+  if (ok) hideIntro();   // اشتغلت لوحدها → مفيش داعي لشاشة الافتتاح
+})();
+</script>
+</body>
+</html>
